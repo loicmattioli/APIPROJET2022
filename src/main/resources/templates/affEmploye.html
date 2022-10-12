@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infos Employé</title>
+</head>
+<body>
+<table border="1">
+  <th>ID</th>
+  <th>MATRICULE</th>
+  <th>NOM</th>
+  <th>PRENOM</th>
+  <th>TELEPHONE</th>
+  <th>MAIL</th>
+  <tr>
+    <td th:text="${monemp.id_apiemploye}"/>
+    <td th:text="${monemp.matricule}"/>
+    <td th:text="${monemp.nom}"/>
+    <td th:text="${monemp.prenom}"/>
+    <td th:text="${monemp.tel}"/>
+    <td th:text="${monemp.mail}"/>
+  </tr>
+</table>
+
+<a href ="/">retour</a>
+</body>
+</html>
