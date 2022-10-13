@@ -31,6 +31,7 @@ public class GestEmploye {
             // lemp = employeRepository.findAllByEmploye();
             //lemp = employeRepository.
             model.put("mesEmployes", lemp);
+
         } catch (Exception e) {
             System.out.println("----------erreur lors de la recherche-------- " + e);
             model.put("error", e.getMessage());
@@ -75,6 +76,11 @@ public class GestEmploye {
                 employeRepository.save(emp);
                 model.put("nouvemp", emp);
             });
+            if (lemp.isEmpty()){
+                throw new Exception("ID introuvable");
+            }else{
+                System.out.println("Modification effectuée");
+            }
 
             // lemp = employeRepository.findAllByEmploye();
             //lemp = employeRepository.
@@ -110,6 +116,12 @@ public class GestEmploye {
                 employeRepository.deleteById(id_apiemploye);
                 model.put("suppremp", emp);
             });
+            if (lemp.isEmpty()){
+                throw new Exception("ID introuvable");
+            }else{
+                System.out.println("Suppression effectuée");
+            }
+
 
         } catch (Exception e) {
             System.out.println("----------erreur lors de la suppression-------- " + e);
@@ -130,6 +142,12 @@ public class GestEmploye {
                 emp = lemp.get();
                 model.put("monemp", emp);
             });
+            if (lemp.isEmpty()){
+                throw new Exception("ID introuvable");
+            }else{
+                System.out.println("Recherche effectuée avec succès");
+            }
+
 
         } catch (Exception e) {
             System.out.println("----------erreur lors de la recherche-------- " + e);
