@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infos Employé</title>
+</head>
+<body>
+<table border="1">
+  <th>ID</th>
+  <th>NOM</th>
+  <th>DESCRIPTION</th>
+  <tr>
+    <td th:text="${madsc.id_apidisciplines}"/>
+    <td th:text="${madsc.nom}"/>
+    <td th:text="${madsc.description}"/>
+  </tr>
+</table>
+
+<a href ="/">retour</a>
+</body>
+</html>

@@ -3,6 +3,7 @@ package be.condorcet.apiprojet2022.services;
 import be.condorcet.apiprojet2022.repositories.EmployeRepository;
 import be.condorcet.apiprojet2022.entities.Employe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -34,6 +35,7 @@ public class EmployeServiceImpl implements InterfEmployeService{
 
     @Override
     public Employe update(Employe employe) throws Exception {
+        read(employe.getId_apiemploye()); //permet de ne pas créer un client qui n'existe pas
         employeRepository.save(employe);
         return employe;
     }
