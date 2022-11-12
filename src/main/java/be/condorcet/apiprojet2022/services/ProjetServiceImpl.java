@@ -21,12 +21,12 @@ public class ProjetServiceImpl implements InterfProjetService{
 
     @Override
     public List<Projet> readUnique(String titre) {
-        return projetRepository.findProjetByTitreLike(titre+"%");
+        return projetRepository.findProjetByTitreLike(titre);
     }
 
     @Override
     public List<Projet> read(String cout) {
-        return projetRepository.findProjetByCoutLike(cout+"%");
+        return projetRepository.findProjetByCoutLike(cout);
     }
 
     @Override

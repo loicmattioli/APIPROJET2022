@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,11 +30,13 @@ class ProjetServiceImplTest {
 
     @BeforeEach //equivalent de populate, execution au lancement du test
     void setUp() {
+       Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
         try{
-            dsc = new Disciplines(null,"NomTest","DescriptionTest");
+            dsc = new Disciplines(null,"NomTest","DescriptionTest",new ArrayList<>());
             disciplinesServiceImpl.create(dsc);
             System.out.println("création de la discipline : "+dsc);
-            pro = new Projet(null,"TitreTest", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),10,dsc);
+            pro = new Projet(null,"TitreTest", datedebut,datefin,"10",dsc);
             projetServiceImpl.create(pro);
             System.out.println("création du projet : "+pro);
         }catch(Exception e){
@@ -54,15 +57,18 @@ class ProjetServiceImplTest {
     @Test
     void create() {
         assertNotEquals(0,pro.getId_apiprojet(), "id projet non incrémenté");
-        /*assertEquals("TitreTest",pro.getTitre(),"titre projet non enregistré : "+pro.getTitre()+" au lieu de TitreTest");
-        assertEquals(LocalDate.of(2022,11,02),pro.getDateDebut(),"datedebut du projet non enregistré : "+pro.getDateDebut()+" au lieu de 2022/11/02");
-        assertEquals(LocalDate.of(2022,12,22),pro.getDateFin(),"datefin du projet non enregistré : "+pro.getDateFin()+" au lieu de 2022/12/22");
-        assertEquals(10,pro.getCout(),"coût du projet non enregistré : "+pro.getCout()+" au lieu de 10");*/
+        assertEquals("TitreTest",pro.getTitre(),"titre projet non enregistré : "+pro.getTitre()+" au lieu de TitreTest");
+        assertEquals("2022-11-02",pro.getDateDebut(),"datedebut du projet non enregistré : "+pro.getDateDebut()+" au lieu de 2022-11-02");
+        assertEquals("2022-12-22",pro.getDateFin(),"datefin du projet non enregistré : "+pro.getDateFin()+" au lieu de 2022-12-22");
+        assertEquals(10,pro.getCout(),"coût du projet non enregistré : "+pro.getCout()+" au lieu de 10");
+        assertEquals(dsc.getNom(),pro.getDisciplines().getNom(),"nom de la discipline non enregistré "+pro.getDisciplines().getNom()+" au lieu de NomTest");
     }
 
     @Test()
     void creationDoublon() {   //ajouté
-        Projet pro2 = new Projet(null,"TitreTest", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),20,null); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
+        Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
+        Projet pro2 = new Projet(null,"TitreTest", datedebut,datefin,"20",null); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
         Assertions.assertThrows(Exception.class, () -> { //on teste une méthode pour voir si elle renvoie une exception
             projetServiceImpl.create(pro2); //méthode à invoquer pour tester
         }, "création d'un doublon");
@@ -85,7 +91,7 @@ class ProjetServiceImplTest {
     void update() {
         try{
             pro.setTitre("TitreTest2");
-            pro.setCout(20);
+            pro.setCout("20");
 
             pro = projetServiceImpl.update(pro);
             assertEquals("TitreTest2",pro.getTitre(),"titres différents "+ " TitreTest2"+" - "+pro.getTitre());
@@ -120,10 +126,10 @@ class ProjetServiceImplTest {
 
     @Test
     void rechCout() {
-        List<Projet> lpro = projetServiceImpl.read(String.valueOf(10));
+        List<Projet> lpro = projetServiceImpl.read("10");
         boolean trouve = false;
         for (Projet p : lpro) {
-            if (p.getCout() == (10)) trouve = true;
+            if (p.getCout().equals("10")) trouve = true;
             else fail("un record ne correspond pas , cout = " + p.getCout());
         }
         assertTrue(trouve, "record non trouvé dans la liste");

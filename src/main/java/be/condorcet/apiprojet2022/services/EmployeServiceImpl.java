@@ -35,7 +35,7 @@ public class EmployeServiceImpl implements InterfEmployeService{
 
     @Override
     public Employe update(Employe employe) throws Exception {
-        read(employe.getId_apiemploye()); //permet de ne pas créer un client qui n'existe pas
+       // read(employe.getId_apiemploye()); //permet de ne pas créer un client qui n'existe pas
         employeRepository.save(employe);
         return employe;
     }

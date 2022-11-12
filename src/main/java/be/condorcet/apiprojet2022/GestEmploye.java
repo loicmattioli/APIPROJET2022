@@ -42,9 +42,9 @@ public class GestEmploye {
 
     @RequestMapping("/create")
     public String create(@RequestParam String matricule, @RequestParam String nom, @RequestParam String
-            prenom, @RequestParam String tel, @RequestParam String mail, Map<String, Object> model) {
+            prenom, Map<String, Object> model) {
         System.out.println("création d'employé'");
-        Employe apip = new Employe(matricule, nom, prenom, tel, mail);
+        Employe apip = new Employe(matricule, nom, prenom);
         try {
             employeRepository.save(apip);//mise à jour du client avec son id par l'environnement
             System.out.println(apip);
@@ -126,6 +126,7 @@ public class GestEmploye {
         } catch (Exception e) {
             System.out.println("----------erreur lors de la suppression-------- " + e);
             model.put("error", e.getMessage());
+            e.printStackTrace();
             return "error";
         }
 

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeRepository extends JpaRepository<Employe,Integer> {
-    List<Employe> findEmployeByNomLike(String s);
+    public List<Employe> findEmployeByNomLike(String nom);
 }
 
 

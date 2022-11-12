@@ -26,5 +26,4 @@ public class Competence {
     @NonNull
     private Integer niveau;
 
-}
-*/
+}*/

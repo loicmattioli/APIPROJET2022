@@ -39,7 +39,7 @@ public class CompetenceServiceImpl implements InterfCompetenceService{
 
     @Override
     public Competence update(Competence competence) throws Exception {
-        read(competence.getNiveau()); //permet de ne pas créer un client qui n'existe pas
+        read(competence.getNiveau());
         competenceRepository.save(competence);
         return competence;
     }

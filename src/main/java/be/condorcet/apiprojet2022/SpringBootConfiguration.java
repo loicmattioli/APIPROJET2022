@@ -10,7 +10,7 @@ public class SpringBootConfiguration {
     @Value("${server.mode}")
     private String mode;
     @Bean
-    InterfEmployeService employeServiceImpl() {
+    InterfEmployeService EmployeServiceImpl() {
         System.out.println("création du service employé en mode : "+mode);
         switch (mode){
             case "PROD" : return new EmployeServiceImpl();

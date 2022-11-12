@@ -1,9 +1,11 @@
 package be.condorcet.apiprojet2022.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.management.ConstructorParameters;
 import javax.persistence.*;
+import java.util.List;
 
 @Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 @ToString
@@ -17,6 +19,10 @@ public class Disciplines {
     private Integer id_apidisciplines;
     @NonNull
     private String nom;
-    @NonNull
     private String description;
+
+    @OneToMany(mappedBy = "disciplines")
+    @ToString.Exclude
+    @JsonIgnore
+    private List<Projet> projets;
 }

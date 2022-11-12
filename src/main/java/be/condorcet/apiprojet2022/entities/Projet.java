@@ -24,9 +24,8 @@ public class Projet {
     @NonNull
     private Date dateFin;
     @NonNull
-    private int cout;
-    //@JsonIgnoreProperties("apiprojet")
-    @NonNull
+    private String cout;
+
     @ManyToOne
     @JoinColumn(name = "ID_APIDISCIPLINES")
     private Disciplines disciplines;

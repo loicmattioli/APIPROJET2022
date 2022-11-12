@@ -18,7 +18,9 @@ public class ProjetServiceStub implements InterfProjetService{
 
     @Override
     public Projet read(Integer id) throws Exception {
-        Projet pro = new Projet(id,"TitreTest", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),10,null);
+        Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
+        Projet pro = new Projet(id,"TitreTest", datedebut,datefin,"10",null);
         return pro;
     }
     @Override
@@ -30,25 +32,37 @@ public class ProjetServiceStub implements InterfProjetService{
     }
     @Override
     public List<Projet> read(String titre) {
+        Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
+        Date datedebut2 = Date.valueOf("2022-11-03");
+        Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet>lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreTest", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),10,null));
-        lpro.add(new Projet(2,"TitreTest2", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,11,11)),20,null));
+        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,"10",null));
+        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,"20",null));
         return lpro;
     }
 
     @Override
     public List<Projet> readUnique(String cout) {
+        Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
+        Date datedebut2 = Date.valueOf("2022-11-03");
+        Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet>lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreTest", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),10,null));
-        lpro.add(new Projet(2,"TitreTest2", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,11,11)),20,null));
+        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,"10",null));
+        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,"20",null));
         return lpro;
     }
 
     @Override
     public List<Projet> all() throws Exception {
+        Date datedebut = Date.valueOf("2022-11-02");
+        Date datefin = Date.valueOf("2022-12-22");
+        Date datedebut2 = Date.valueOf("2022-11-03");
+        Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet> lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreProjet",Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,12,12)),10,null));
-        lpro.add(new Projet(2,"TitreProjet2", Date.valueOf(LocalDate.now()),Date.valueOf(LocalDate.of(2022,11,11)),20,null));
+        lpro.add(new Projet(1,"TitreProjet",datedebut,datefin,"10",null));
+            lpro.add(new Projet(2,"TitreProjet2", datedebut2,datefin2,"20",null));
         return lpro;
     }
 }

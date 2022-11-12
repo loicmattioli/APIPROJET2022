@@ -41,9 +41,9 @@ public class GestDisciplines {
     }
 
     @RequestMapping("/create")
-    public String create(@RequestParam String nom, @RequestParam String description, Map<String, Object> model) {
+    public String create(@RequestParam String nom, Map<String, Object> model) {
         System.out.println("création de discipline'");
-        Disciplines apid = new Disciplines(nom, description);
+        Disciplines apid = new Disciplines(nom);
         try {
             disciplinesRepository.save(apid);//mise à jour du client avec son id par l'environnement
             System.out.println(apid);

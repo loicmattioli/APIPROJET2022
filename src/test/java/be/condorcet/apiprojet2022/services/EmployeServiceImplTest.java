@@ -50,7 +50,7 @@ class EmployeServiceImplTest {
 
     @Test()
     void creationDoublon() {   //ajouté
-        Employe emp2 = new Employe(null,"MatriculeTest","NomTest","PrenomTest","0001","MailTest2"); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
+        Employe emp2 = new Employe(null,"MatriculeTest","NomTest2","PrenomTest2","0001","MailTest"); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
         Assertions.assertThrows(Exception.class, () -> { //on teste une méthode pour voir si elle renvoie une exception
             employeServiceImpl.create(emp2); //méthode à invoquer pour tester
         }, "création d'un doublon");
@@ -62,8 +62,8 @@ class EmployeServiceImplTest {
         try{
             int numemp = emp.getId_apiemploye();
             Employe emp2 = employeServiceImpl.read(numemp);
-            assertEquals("NomTest",emp2.getNom(),"noms différents "+ " NomTest"+" - "+emp2.getNom());
-            assertEquals("PrenomTest",emp2.getPrenom(),"prenoms différents "+ " PrenomTest"+" - "+emp2.getPrenom());
+            assertEquals("NomTest",emp2.getNom(),"noms différents  "+" NomTest"+"-"+emp2.getNom());
+            assertEquals("PrenomTest",emp2.getPrenom(),"prenoms différents  "+" PrenomTest"+"-"+emp2.getPrenom());
         }catch (Exception e){
             fail("recherche infructueuse "+e);
         }
@@ -76,8 +76,8 @@ class EmployeServiceImplTest {
             emp.setPrenom("PrenomTest2");
 
             emp = employeServiceImpl.update(emp);
-            assertEquals("NomTest2",emp.getNom(),"noms différents : "+ " NomTest2 - " + emp.getNom());
-            assertEquals("PrenomTest2", emp.getPrenom(), "prénoms différents " + " PrenomTest2 - " + emp.getPrenom());
+            assertEquals("NomTest2",emp.getNom(),"noms différents  "+" NomTest2"+"-"+emp.getNom());
+            assertEquals("PrenomTest2",emp.getPrenom(),"prenoms différents  "+" PrenomTest2"+"-"+emp.getPrenom());
         }catch (Exception e){
             fail("erreur de mise à jour "+e);
         }
@@ -85,13 +85,13 @@ class EmployeServiceImplTest {
 
     @Test
     void delete() {
-        try{
+        try {
             employeServiceImpl.delete(emp);
             Assertions.assertThrows(Exception.class, () -> {
                 employeServiceImpl.read(emp.getId_apiemploye());
-            },"record non effacé");
-        }catch (Exception e){
-            fail("erreur d'effacement "+e);
+            }, "record non effacé");
+        } catch (Exception e) {
+            fail("erreur d'effacement " + e);
         }
     }
 

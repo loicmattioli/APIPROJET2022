@@ -2,9 +2,6 @@ package be.condorcet.apiprojet2022.services;
 
 import be.condorcet.apiprojet2022.entities.Employe;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

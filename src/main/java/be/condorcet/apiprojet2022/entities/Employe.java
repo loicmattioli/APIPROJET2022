@@ -16,12 +16,11 @@ public class Employe {
     private Integer id_apiemploye;
     @NonNull
     private String matricule;
-    @NonNull
     private String nom;
-    @NonNull
     private String prenom;
     @NonNull
     private String tel;
     @NonNull
     private String mail;
+
 }

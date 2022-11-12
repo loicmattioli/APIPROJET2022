@@ -12,5 +12,4 @@ import java.util.Optional;
 
 public interface CompetenceRepository extends JpaRepository<Competence,Integer>{
     List<Competence> findCompetenceByNiveauLike(int i);
-}
-*/
+}*/

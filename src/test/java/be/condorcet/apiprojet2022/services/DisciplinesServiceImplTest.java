@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,13 +18,16 @@ class DisciplinesServiceImplTest {
 
     @Autowired
     private DisciplinesServiceImpl disciplinesServiceImpl;
+    @Autowired
+    private ProjetServiceImpl projetServiceImpl;
+
 
     Disciplines dsc;
 
     @BeforeEach //equivalent de populate, execution au lancement du test
     void setUp() {
         try{
-            dsc = new Disciplines(null,"NomTest","DescriptionTest");
+            dsc = new Disciplines(null,"NomTest","DescriptionTest",new ArrayList<>());
             disciplinesServiceImpl.create(dsc);
             System.out.println("création de la discipline : "+dsc);
         }catch(Exception e){
@@ -50,7 +54,7 @@ class DisciplinesServiceImplTest {
 
     @Test()
     void creationDoublon() {   //ajouté
-        Disciplines dsc2 = new Disciplines(null,"NomTest","DescriptionTest2"); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
+        Disciplines dsc2 = new Disciplines(null,"NomTest","DescriptionTest2",null); //changer les valeurs des cp, localités,...car même si il y a une contrainte d'unicité sur les 7 champs, il peut y avoir plusieurs personnes dans ces loc
         Assertions.assertThrows(Exception.class, () -> { //on teste une méthode pour voir si elle renvoie une exception
             disciplinesServiceImpl.create(dsc2); //méthode à invoquer pour tester
         }, "création d'un doublon");

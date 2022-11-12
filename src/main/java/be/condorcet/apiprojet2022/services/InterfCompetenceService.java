@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface InterfCompetenceService extends InterfService<Competence>{
     public List<Competence> read(int niveau);
-}
-*/
+}*/
