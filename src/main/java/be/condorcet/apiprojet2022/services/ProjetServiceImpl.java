@@ -50,7 +50,7 @@ public class ProjetServiceImpl implements InterfProjetService{
 
     @Override
     public void delete(Projet projet) throws Exception {
-        projetRepository.deleteById(projet.getId_apiprojet());
+        projetRepository.deleteById(projet.getID_APIPROJET());
     }
 
     @Override

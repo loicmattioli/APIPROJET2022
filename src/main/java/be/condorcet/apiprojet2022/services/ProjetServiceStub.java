@@ -20,7 +20,7 @@ public class ProjetServiceStub implements InterfProjetService{
     public Projet read(Integer id) throws Exception {
         Date datedebut = Date.valueOf("2022-11-02");
         Date datefin = Date.valueOf("2022-12-22");
-        Projet pro = new Projet(id,"TitreTest", datedebut,datefin,"10",null);
+        Projet pro = new Projet(id,"TitreTest", datedebut,datefin,10.0,null);
         return pro;
     }
     @Override
@@ -37,8 +37,8 @@ public class ProjetServiceStub implements InterfProjetService{
         Date datedebut2 = Date.valueOf("2022-11-03");
         Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet>lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,"10",null));
-        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,"20",null));
+        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,10.0,null));
+        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,20.0,null));
         return lpro;
     }
 
@@ -49,8 +49,8 @@ public class ProjetServiceStub implements InterfProjetService{
         Date datedebut2 = Date.valueOf("2022-11-03");
         Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet>lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,"10",null));
-        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,"20",null));
+        lpro.add(new Projet(1,"TitreTest", datedebut,datefin,10.0,null));
+        lpro.add(new Projet(2,"TitreTest2", datedebut2,datefin2,20.0,null));
         return lpro;
     }
 
@@ -61,8 +61,8 @@ public class ProjetServiceStub implements InterfProjetService{
         Date datedebut2 = Date.valueOf("2022-11-03");
         Date datefin2 = Date.valueOf("2022-12-23");
         List<Projet> lpro = new ArrayList<>();
-        lpro.add(new Projet(1,"TitreProjet",datedebut,datefin,"10",null));
-            lpro.add(new Projet(2,"TitreProjet2", datedebut2,datefin2,"20",null));
+        lpro.add(new Projet(1,"TitreProjet",datedebut,datefin,10.0,null));
+            lpro.add(new Projet(2,"TitreProjet2", datedebut2,datefin2,20.0,null));
         return lpro;
     }
 }

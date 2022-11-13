@@ -16,15 +16,15 @@ public class Projet {
             "projet_generator")
     @SequenceGenerator(name="projet_generator", sequenceName =
             "APIPROJET_SEQ", allocationSize=1)
-    private Integer id_apiprojet;
+    private Integer ID_APIPROJET;
     @NonNull
     private String titre;
-    @NonNull
-    private Date dateDebut;
-    @NonNull
-    private Date dateFin;
-    @NonNull
-    private String cout;
+
+    private Date DATEDEBUT;
+
+    private Date DATEFIN;
+
+    private Double cout;
 
     @ManyToOne
     @JoinColumn(name = "ID_APIDISCIPLINES")
