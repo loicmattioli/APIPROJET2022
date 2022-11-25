@@ -1,7 +1,10 @@
 package be.condorcet.apiprojet2022.services;
 
 
+import be.condorcet.apiprojet2022.entities.Disciplines;
 import be.condorcet.apiprojet2022.entities.Projet;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -55,6 +58,11 @@ public class ProjetServiceStub implements InterfProjetService{
     }
 
     @Override
+    public List<Projet> getProjets(Disciplines dsc) {
+        return null;
+    }
+
+    @Override
     public List<Projet> all() throws Exception {
         Date datedebut = Date.valueOf("2022-11-02");
         Date datefin = Date.valueOf("2022-12-22");
@@ -64,6 +72,11 @@ public class ProjetServiceStub implements InterfProjetService{
         lpro.add(new Projet(1,"TitreProjet",datedebut,datefin,10.0,null));
             lpro.add(new Projet(2,"TitreProjet2", datedebut2,datefin2,20.0,null));
         return lpro;
+    }
+
+    @Override
+    public Page<Projet> allp(Pageable pageable) throws Exception {
+        return null;
     }
 }
 

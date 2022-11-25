@@ -1,6 +1,8 @@
 package be.condorcet.apiprojet2022.services;
 
 import be.condorcet.apiprojet2022.entities.Employe;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,12 @@ public class EmployeServiceStub implements InterfEmployeService{
         lemp.add(new Employe(2,"MatriculeTest2",nom,"PrenomTest2","0002",null));
         return lemp;
     }
+
+    @Override
+    public Employe readTriplet(String matricule, String tel, String mail) {
+        return null;
+    }
+
     @Override
     public List<Employe> all() throws Exception {
         List<Employe> lemp = new ArrayList<>();
@@ -38,5 +46,12 @@ public class EmployeServiceStub implements InterfEmployeService{
         lemp.add(new Employe(2,"123","NomEmploye2","PrenomEmploye2","0002",null));
         return lemp;
     }
+
+    @Override
+    public Page<Employe> allp(Pageable pageable) throws Exception {
+        return null;
+    }
+
+
 }
 

@@ -3,7 +3,8 @@ package be.condorcet.apiprojet2022.services;
 import be.condorcet.apiprojet2022.repositories.EmployeRepository;
 import be.condorcet.apiprojet2022.entities.Employe;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,6 +20,11 @@ public class EmployeServiceImpl implements InterfEmployeService{
     @Override
     public List<Employe> read(String nom) {
         return employeRepository.findEmployeByNomLike(nom+"%");
+    }
+
+    @Override
+    public Employe readTriplet(String matricule, String tel, String mail) {
+        return employeRepository.findEmployeByMatriculeAndTelAndMail(matricule+"%",tel+"%",mail+"%");
     }
 
     @Override
@@ -49,4 +55,10 @@ public class EmployeServiceImpl implements InterfEmployeService{
     public List<Employe> all() throws Exception {
         return employeRepository.findAll();
     }
+
+    @Override
+    public Page<Employe> allp(Pageable pageable) throws Exception {
+        return employeRepository.findAll(pageable);
+    }
+
 }

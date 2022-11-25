@@ -1,6 +1,8 @@
 package be.condorcet.apiprojet2022.services;
 
 import be.condorcet.apiprojet2022.entities.Employe;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,6 +54,11 @@ public class EmployeSeviceMock implements InterfEmployeService {
     }
 
     @Override
+    public Employe readTriplet(String matricule, String tel, String mail) {
+        return null;
+    }
+
+    @Override
     public void delete(Employe empdel) throws Exception {
         Iterator<Employe> itc = lemp.iterator();
         while (itc.hasNext()) {
@@ -66,6 +73,12 @@ public class EmployeSeviceMock implements InterfEmployeService {
     public List<Employe> all() throws Exception {
         return lemp;
     }
+
+    @Override
+    public Page<Employe> allp(Pageable pageable) throws Exception {
+        return null;
+    }
+
 }
 
 

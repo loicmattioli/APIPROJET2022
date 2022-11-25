@@ -1,6 +1,8 @@
 package be.condorcet.apiprojet2022.services;
 
 import be.condorcet.apiprojet2022.entities.Disciplines;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,5 +70,10 @@ public class DisciplinesSeviceMock implements InterfDisciplinesService {
     @Override
     public List<Disciplines> all() throws Exception {
         return ldsc;
+    }
+
+    @Override
+    public Page<Disciplines> allp(Pageable pageable) throws Exception {
+        return null;
     }
 }

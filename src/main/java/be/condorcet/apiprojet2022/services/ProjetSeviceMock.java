@@ -1,7 +1,10 @@
 package be.condorcet.apiprojet2022.services;
 
 
+import be.condorcet.apiprojet2022.entities.Disciplines;
 import be.condorcet.apiprojet2022.entities.Projet;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -58,6 +61,11 @@ public class ProjetSeviceMock implements InterfProjetService {
     }
 
     @Override
+    public List<Projet> getProjets(Disciplines dsc) {
+        return null;
+    }
+
+    @Override
     public void delete(Projet prodel) throws Exception {
         Iterator<Projet> itc = lpro.iterator();
         while (itc.hasNext()) {
@@ -71,5 +79,10 @@ public class ProjetSeviceMock implements InterfProjetService {
     @Override
     public List<Projet> all() throws Exception {
         return lpro;
+    }
+
+    @Override
+    public Page<Projet> allp(Pageable pageable) throws Exception {
+        return null;
     }
 }

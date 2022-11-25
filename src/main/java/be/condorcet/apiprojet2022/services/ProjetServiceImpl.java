@@ -1,9 +1,12 @@
 package be.condorcet.apiprojet2022.services;
 
+import be.condorcet.apiprojet2022.entities.Disciplines;
 import be.condorcet.apiprojet2022.repositories.DisciplinesRepository;
 import be.condorcet.apiprojet2022.repositories.ProjetRepository;
 import be.condorcet.apiprojet2022.entities.Projet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,6 +25,12 @@ public class ProjetServiceImpl implements InterfProjetService{
     @Override
     public List<Projet> readUnique(String titre) {
         return projetRepository.findProjetByTitreLike(titre);
+    }
+
+    @Override
+    public List<Projet> getProjets(Disciplines dsc) {
+        List<Projet> lpro = projetRepository.findProjetByDisciplines(dsc);
+        return lpro;
     }
 
     @Override
@@ -56,5 +65,10 @@ public class ProjetServiceImpl implements InterfProjetService{
     @Override
     public List<Projet> all() throws Exception {
         return projetRepository.findAll();
+    }
+
+    @Override
+    public Page<Projet> allp(Pageable pageable) throws Exception {
+        return projetRepository.findAll(pageable);
     }
 }
