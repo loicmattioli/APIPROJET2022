@@ -34,7 +34,7 @@ public class ProjetServiceImpl implements InterfProjetService{
     }
 
     @Override
-    public List<Projet> read(String cout) {
+    public List<Projet> readTitre(String cout) {
         return projetRepository.findProjetByCoutLike(cout);
     }
 

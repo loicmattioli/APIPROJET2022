@@ -32,6 +32,15 @@ public class RestProjet {
         return new ResponseEntity<>(pro, HttpStatus.OK);
     }
 
+    //-------------------Retrouver les projets par titre--------------------------------------------------------
+    @RequestMapping(value = "/titre={titre}", method = RequestMethod.GET)
+    public ResponseEntity<List<Projet>> listProjetsTitre(@PathVariable(value="titre") String titre) throws Exception{
+        System.out.println("recherche de "+titre);
+        List<Projet> projets;
+        projets = projetServiceImpl.readUnique(titre);
+        return new ResponseEntity<>(projets, HttpStatus.OK);
+    }
+
     //-------------------Retrouver le projet correspondant à un n° donné--------------------------------------------------------
     @RequestMapping(value = "/id_apidisciplines={id}", method = RequestMethod.GET)
     public ResponseEntity<List<Projet>> getProjetDiscipline(@PathVariable(value = "id") int id)  throws Exception{

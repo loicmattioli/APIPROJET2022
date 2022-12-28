@@ -34,7 +34,7 @@ public class ProjetServiceStub implements InterfProjetService{
     public void delete(Projet projet) throws Exception {
     }
     @Override
-    public List<Projet> read(String titre) {
+    public List<Projet> readTitre(String titre) {
         Date datedebut = Date.valueOf("2022-11-02");
         Date datefin = Date.valueOf("2022-12-22");
         Date datedebut2 = Date.valueOf("2022-11-03");

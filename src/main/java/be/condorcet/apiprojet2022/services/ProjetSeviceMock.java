@@ -47,7 +47,7 @@ public class ProjetSeviceMock implements InterfProjetService {
     }
 
     @Override
-    public List<Projet> read(String titre) {
+    public List<Projet> readTitre(String titre) {
         List<Projet> lprotitre = new ArrayList<>();
         lpro.stream().filter(cl -> cl.getTitre().equals(titre)).forEach(cl -> lprotitre.add(cl));
         return lprotitre;

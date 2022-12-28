@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*",allowedHeaders = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/employes")
 public class RestEmploye {
