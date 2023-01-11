@@ -37,6 +37,16 @@ public class RestDisciplines {
         disciplines = disciplinesServiceImpl.read(nom);
         return new ResponseEntity<>(disciplines, HttpStatus.OK);
     }
+
+    //-------------------Retrouver les disciplines portant une description donnée --------------------------------------------------------
+    @RequestMapping(value = "/description={description}", method = RequestMethod.GET)
+    public ResponseEntity<List<Disciplines>> listDisciplinesDescription(@PathVariable(value="description") String description) throws Exception{
+        System.out.println("recherche de "+description);
+        List<Disciplines> disciplines;
+        disciplines = disciplinesServiceImpl.readUnique(description);
+        return new ResponseEntity<>(disciplines, HttpStatus.OK);
+    }
+
     //-------------------Créer une discipline--------------------------------------------------------
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Disciplines> createDisciplines(@RequestBody Disciplines discipline) throws Exception {

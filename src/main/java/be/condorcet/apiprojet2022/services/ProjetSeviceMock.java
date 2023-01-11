@@ -6,10 +6,7 @@ import be.condorcet.apiprojet2022.entities.Projet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ProjetSeviceMock implements InterfProjetService {
     private List<Projet> lpro = new ArrayList<>();
@@ -54,6 +51,11 @@ public class ProjetSeviceMock implements InterfProjetService {
     }
 
     @Override
+    public List<Projet> readCout(Double cout) {
+        return null;
+    }
+
+    @Override
     public List<Projet> readUnique(String cout) {
         List<Projet> lprocout = new ArrayList<>();
         lpro.stream().filter(cl -> Objects.equals(cl.getCout(), cout)).forEach(cl -> lprocout.add(cl));
@@ -62,6 +64,11 @@ public class ProjetSeviceMock implements InterfProjetService {
 
     @Override
     public List<Projet> getProjets(Disciplines dsc) {
+        return null;
+    }
+
+    @Override
+    public List<Projet> readDateDebut(Date d) {
         return null;
     }
 

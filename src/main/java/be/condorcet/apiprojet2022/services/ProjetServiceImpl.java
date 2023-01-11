@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,19 +24,28 @@ public class ProjetServiceImpl implements InterfProjetService{
 
 
     @Override
-    public List<Projet> readUnique(String titre) {
-        return projetRepository.findProjetByTitreLike(titre);
+    public List<Projet> readTitre(String titre) {
+        return projetRepository.findProjetByTitreLike(titre+"%");
+    }
+
+    public List<Projet> readDateDebut(Date datedebut){
+        return projetRepository.findProjetByDATEDEBUT(datedebut);
+    }
+
+    @Override
+    public List<Projet> readCout(Double cout) {
+        return projetRepository.findProjetByCout(cout);
+    }
+
+    @Override
+    public List<Projet> readUnique(String cout) {
+        return null;
     }
 
     @Override
     public List<Projet> getProjets(Disciplines dsc) {
         List<Projet> lpro = projetRepository.findProjetByDisciplines(dsc);
         return lpro;
-    }
-
-    @Override
-    public List<Projet> readTitre(String cout) {
-        return projetRepository.findProjetByCoutLike(cout);
     }
 
     @Override

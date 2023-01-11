@@ -6,9 +6,7 @@ import be.condorcet.apiprojet2022.entities.Projet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +44,11 @@ public class ProjetServiceStub implements InterfProjetService{
     }
 
     @Override
+    public List<Projet> readCout(Double cout) {
+        return null;
+    }
+
+    @Override
     public List<Projet> readUnique(String cout) {
         Date datedebut = Date.valueOf("2022-11-02");
         Date datefin = Date.valueOf("2022-12-22");
@@ -59,6 +62,11 @@ public class ProjetServiceStub implements InterfProjetService{
 
     @Override
     public List<Projet> getProjets(Disciplines dsc) {
+        return null;
+    }
+
+    @Override
+    public List<Projet> readDateDebut(java.util.Date d) {
         return null;
     }
 

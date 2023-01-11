@@ -8,10 +8,13 @@ import be.condorcet.apiprojet2022.services.InterfDisciplinesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "*",allowedHeaders = "*", exposedHeaders = "*")
@@ -37,7 +40,24 @@ public class RestProjet {
     public ResponseEntity<List<Projet>> listProjetsTitre(@PathVariable(value="titre") String titre) throws Exception{
         System.out.println("recherche de "+titre);
         List<Projet> projets;
-        projets = projetServiceImpl.readUnique(titre);
+        projets = projetServiceImpl.readTitre(titre);
+        return new ResponseEntity<>(projets, HttpStatus.OK);
+    }
+
+    //-------------------Retrouver les projets par date de debut--------------------------------------------------------
+    @RequestMapping(value = "/datedebut={datedebut}", method = RequestMethod.GET)
+    public ResponseEntity<List<Projet>> listProjetsDatedebut(@PathVariable(value = "datedebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date datedebut) throws Exception{
+        System.out.println("recherche de "+datedebut);
+        List<Projet> projets;
+        projets = projetServiceImpl.readDateDebut(datedebut);
+        return new ResponseEntity<>(projets, HttpStatus.OK);
+    }
+    //-------------------Retrouver les projets par coûts--------------------------------------------------------
+    @RequestMapping(value = "/cout={cout}", method = RequestMethod.GET)
+    public ResponseEntity<List<Projet>> listProjetCout(@PathVariable(value="cout") Double cout) throws Exception{
+        System.out.println("recherche de "+cout);
+        List<Projet> projets;
+        projets = projetServiceImpl.readCout(cout);
         return new ResponseEntity<>(projets, HttpStatus.OK);
     }
 
